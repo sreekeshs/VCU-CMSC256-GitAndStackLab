@@ -1,31 +1,39 @@
 import java.util.Arrays;
 
 public class ArrayBasedStack <T> implements StackInterface <T>{
-   //private T[] data = (T[]) new Object[length];
+   int length;
+   private T[] data = (T[]) new Object[length];
    private int topOfStack; 
    final int INITIAL_CAPACITY = 5;
    boolean initialized = false;
-   int initialCapacity;
    
-   public ArrayBasedStack(int initialCapacity) {
+   
+   public ArrayBasedStack(int length) {
       topOfStack = -1; 
-      if (initialCapacity < 0) {
+      if (length < 0) {
          throw new IllegalArgumentException ("Too small");
       }
       
    }
    
    public ArrayBasedStack() {
-      initialCapacity = INITIAL_CAPACITY;
+      length = INITIAL_CAPACITY;
    } 
    
-   private void doubleArray() {
-      
+   @SuppressWarnings("unchecked")
+   private T[] expandArray() {
+      length = length * 2;
+      T[] temp = Arrays.copyOf(data, length);
+      return temp;
    }
    
    /** Adds a new entry to the top of this stack.
        @param newEntry  An object to be added to the stack. */
    public void push(T newEntry){
+      topOfStack++; 
+      if (topOfStack > length) {
+         //Arrays.expandArray();
+      }   
    
    }
   
