@@ -1,4 +1,5 @@
-import java.util.Arrays;
+import java.util.Arrays; 
+import java.util.EmptyStackException;
 
 public class ArrayBasedStack <T> implements StackInterface <T>{
    int length;
@@ -41,6 +42,13 @@ public class ArrayBasedStack <T> implements StackInterface <T>{
        @return  The object at the top of the stack. 
        @throws  EmptyStackException if the stack is empty before the operation. */
    public T pop() {
+      if (isEmpty() == true) {
+         throw new EmptyStackException();
+      } else {
+         for (int i = 0; i < data.length; i++) {
+            
+         }
+      }
       return null;
    }
   
@@ -54,7 +62,11 @@ public class ArrayBasedStack <T> implements StackInterface <T>{
    /** Detects whether this stack is empty.
        @return  True if the stack is empty. */
    public boolean isEmpty() {
-      return false;
+      if (topOfStack < 0) {
+         return true;
+      } else {
+         return false; 
+      }
    }
   
    /** Removes all entries from this stack. */
